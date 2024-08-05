@@ -4,6 +4,7 @@ import com.ibm.SerasaProject.model.pessoa.Pessoa;
 import com.ibm.SerasaProject.model.pessoa.PessoaRequest;
 import com.ibm.SerasaProject.model.pessoa.PessoaResponse;
 import com.ibm.SerasaProject.service.PessoaService;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

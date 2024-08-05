@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class PessoaRequest {
     private String nome;
+    private String telefone;
     private Integer idade;
     private String cep;
     private Integer score;
@@ -41,5 +42,13 @@ public class PessoaRequest {
 
     public void setScore(Integer score) {
         this.score = score;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 }
