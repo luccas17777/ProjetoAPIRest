@@ -12,6 +12,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PessoaService {
 
@@ -45,6 +47,24 @@ public class PessoaService {
         pessoa.setBairro(endereco.getBairro());
 
         pessoaRepository.save(pessoa);
+    }
+
+    public List<PessoaResponse> listarPessoas(String nome, String cep, Integer idade){
+        List<PessoaDTO> pessoasDTO;
+
+        if (nome != null) {
+           pessoasDTO = modelMapper.entityListToDtoList(pessoaRepository.findByNomeContainingIgnoreCase(nome));
+           return modelMapper.dtoListToResponseList(pessoasDTO);
+        } else if (idade != null) {
+             pessoasDTO = modelMapper.entityListToDtoList(pessoaRepository.findByCep(cep));
+             return modelMapper.dtoListToResponseList(pessoasDTO);
+        } else if (cep != null) {
+             pessoasDTO = modelMapper.entityListToDtoList(pessoaRepository.findByIdade(idade));
+             return modelMapper.dtoListToResponseList(pessoasDTO);
+        } else {
+             return null;
+    }
+
     }
 
 }
